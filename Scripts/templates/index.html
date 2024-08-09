@@ -1,0 +1,144 @@
+{% with messages = get_flashed_messages()%}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}")
+        </script>
+    {% endif %}
+{% endwith %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Demo 2 for the tutorial on how to animate SVG animals using only CSS (SCSS)" />
+		<meta name="keywords" content="animated animals, css, scss, squigglevision, svg, husky, web design" />
+		<meta name="author" content="David Khourshid for Codrops" />
+		<link rel="shortcut icon" href="aw.ico">
+		<link href='https://fonts.googleapis.com/css?family=Freckle+Face' rel='stylesheet' type='text/css'>		
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/fox.css" />
+		<link rel="stylesheet" href="css/heading.css">
+        <link rel="stylesheet" href="css/body.css">
+		<link rel="stylesheet" href="css/loding.css">
+		<style>.T{width: auto;}.T:hover{filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);}</style>		
+	</head>	
+	<body class="demo-fox">
+		<div class="container">
+			<header class="codrops-header">
+				<h1>Game Server Controller</h1>			
+				<p class="info">Please view on a desktop <br/>(Chrome only)</p>
+				<div class="col-md-6 col-lg-4 mb-5">
+					<script>
+						self.name='unreload'                   
+					</script>
+					<div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal0">
+                        {% if IsBuildEnable %}
+                        <a href="/buildDownload">
+                           <img class="T" src="assets/img/BuildDownload.png" alt="build" style=" width:auto; height:auto; margin:30px; border-radius:50px;"/>
+                        </a>
+						<a href="/devStart">
+							<img class="T" src="assets/img/DEV.png" alt="Build Start" style=" width:250px; height:250px; margin:50px; border-radius:50px;"/>
+						</a>
+						<a href="/devRestart">
+							<img class="T" src="assets/img/DEVRestart.png" alt="Restart Server" style=" width:250px; height:250px; margin:50px; border-radius:50px;"/>
+						</a>
+						<a href="/qaStart">
+							<img class="T" src="assets/img/QA.png" alt="Build Start" style=" width:250px; height:250px; margin:50px; border-radius:50px;"/>
+						</a>
+						<a href="/qaRestart">
+							<img class="T" src="assets/img/QARestart.png" alt="Restart Server" style=" width:250px; height:250px; margin:50px; border-radius:50px;"/>
+						</a>
+						{% else %}                   
+						<div class="d-flex justify-content-center">	
+							<div style="position: relative;">
+                                <img class="T" src="assets/img/BuildDownload.png" alt="build" style=" width:auto; height:auto; margin:30px; border-radius:50px; filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);"/>
+								<img src="assets/img/DEV.png" alt="DEV Build Start" style=" width:300px; height:300px; margin:40px; border-radius:50px; filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);"/>
+								<img src="assets/img/DEVRestart.png" alt="DEV Restart Server" style=" width:300px; height:300px; margin:40px; border-radius:50px; filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);"/>
+								<img src="assets/img/QA.png" alt="QA Build Start" style=" width:300px; height:300px; margin:40px; border-radius:50px; filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);"/>
+								<img src="assets/img/QARestart.png" alt="QA Restart Server" style=" width:300px; height:300px; margin:40px; border-radius:50px; filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);"/>
+									<div class="loading" style="position: absolute; top: 50%; bottom: 50%; left: 50%; right: 50%; "></div>
+							</div>
+							<script>
+								setTimeout(function(){
+								location.reload();
+								},10000);
+							</script>
+						</div>
+						{% endif %} 
+						{% if value %} <!--Dev Server Check-->
+						<div class="content" style="background-color: greenyellow; width: 700px; height: auto; margin:30px; border-radius:50px;">
+							<h1 style="color: black; top:-20PX">DEV SERVER ON</h1>
+                        </div>
+						{% else %}
+                            <div class="content" style="background-color: red; width: 700px; height: auto; margin:30px; border-radius:50px;">
+                                <h1 style="color: black; top:-20PX">DEV SERVER OFF</h1>
+                            </div>
+                            <!-- home reload
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                            -->
+						{% endif %}
+						{% if value2 %} <!--QA Server Check-->
+                            <div class="content" style="background-color: greenyellow; width: 700px; height: auto; margin:30px; border-radius:50px;">
+                                <h1 style="color: black; top:-20PX">QA SERVER ON</h1>
+                            </div>
+						{% else %}
+                            <div class="content" style="background-color: red; width: 700px; height: auto; margin:30px; border-radius:50px;">
+                                <h1 style="color: black; top:-20PX">QA SERVER OFF</h1>
+                            </div>
+                            <!-- home reload
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                            -->
+						{% endif %}						
+					</div>
+				</div>
+			</header>
+            <!--FOX-->
+			<div class="content content--fox">								
+				<div class="fox">
+					<div class="fox-body">
+						<div class="fox-front-leg"></div>
+						<div class="fox-front-leg"></div>
+					</div>
+					<div class="fox-head">
+						<div class="fox-face">
+							<div class="fox-ears">
+								<div class="fox-ear"></div>
+								<div class="fox-ear"></div>
+							</div>
+							<div class="fox-skull"></div>
+							<div class="fox-front"></div>
+							<div class="fox-eyes"></div>
+							<div class="fox-nose"></div>
+						</div>
+					</div>
+					<div class="fox-tail">
+						<div class="fox-tail">
+							<div class="fox-tail">
+								<div class="fox-tail">
+									<div class="fox-tail">
+										<div class="fox-tail">
+											<div class="fox-tail">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- /content -->
+		</div><!-- /container -->
+	</body>
+</html>

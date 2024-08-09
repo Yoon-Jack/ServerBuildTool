@@ -1,0 +1,198 @@
+{% with messages = get_flashed_messages()%}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}")
+        </script>
+    {% endif %}
+{% endwith %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Demo 2 for the tutorial on how to animate SVG animals using only CSS (SCSS)" />
+		<meta name="keywords" content="animated animals, css, scss, squigglevision, svg, husky, web design" />
+		<meta name="author" content="David Khourshid for Codrops" />
+		<link rel="shortcut icon" href="aw.ico">
+		<link href='https://fonts.googleapis.com/css?family=Freckle+Face' rel='stylesheet' type='text/css'>		
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/husky.css" />
+		<link rel="stylesheet" href="css/heading.css">
+        <link rel="stylesheet" href="css/body.css">
+		<link rel="stylesheet" href="css/loading.css">
+		<link rel="stylesheet" href="css/button.css">
+		<style>.T{width: auto;}.T:hover{filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);}</style>
+	</head>
+	<body class="demo-husky">
+		<div class="snow"></div>
+		<div class="container">
+			<header class="codrops-header">
+				<h1>Dev Server Controller</h1>
+				<p class="info">Please view on a desktop <br/>(Chrome only)</p>
+				<div class="col-md-6 col-lg-4 mb-5">
+					<script>
+						self.name='unreload'
+					</script>
+                    <div class="button-group">
+                        {% if value %} <!--Dev Server Check-->
+                            <div class="content green">
+                                <h1>Dev SERVER ON</h1>
+                            </div>
+                        {% else %}
+                            <div class="content red">
+                                <h1>Dev SERVER OFF</h1>
+                            </div>
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                        {% endif %}
+                        {% if ls_value %} <!--Dev Login Server Check-->
+                            <div class="content green">
+                                <h1>Dev LOGIN SERVER ON</h1>
+                            </div>
+                        {% else %}
+                            <div class="content red">
+                                <h1>Dev LOGIN SERVER OFF</h1>
+                            </div>
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                        {% endif %}
+                        {% if am_value %} <!--Dev Login Server Check-->
+                            <div class="content green">
+                                <h1>Dev Admin SERVER ON</h1>
+                            </div>
+                        {% else %}
+                            <div class="content red">
+                                <h1>Dev Admin SERVER OFF</h1>
+                            </div>
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                        {% endif %}
+                    </div>
+				    <div class="button-group">
+                        {% if IsBuildEnable %}
+                            <div class="button-row">
+                                <a href="/devOnlyBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-dodgerblue">Game Server Build Only</button>
+                                </a>
+                                <a href="/devAllBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-dodgerblue">All Build</button>
+                                </a>
+                                <a href="/devAllRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-dodgerblue">All Restart</button>
+                                </a>
+                            </div>
+                            <div class="button-row">
+                                <a href="/devBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-skyblue">Game Server Build&Restart</button>
+                                </a>
+                                <a href="/devRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-skyblue">Game Server Restart</button>
+                                </a>
+                            </div>
+                            <div class="button-row">
+                                <a href="/devLoginBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-blue">Login Server Build&Restart</button>
+                                </a>
+                                <a href="/devLoginRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-blue">Login Server Restart</button>
+                                </a>
+                            </div>
+                            <div class="button-row">
+                                <a href="/devAdminBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-royalblue">Admin Server Build&Restart</button>
+                                </a>
+                                <a href="/devAdminRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-royalblue">Admin Server Restart</button>
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="button-row">
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev Build Only</button>
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev All Build</button>
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev All Restart</button>
+                            </div>
+                            <div class="button-row">
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev Server Build&Restart</button>
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev Server Restart</button>
+                            </div>
+                            <div class="button-row">
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev Login Server Build&Restart</button>
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev Login Server Restart</button>
+                            </div>
+                            <div class="button-row">
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev Admin Server Build&Restart</button>
+                                <button class="custom-button custom-button-blue" disabled style="opacity: 0.5; cursor: not-allowed;">Dev Admin Server Restart</button>
+                            </div>
+                            <div class="loading" style="position: absolute; z-index: 2;"></div>
+                            <script>
+                                setTimeout(function(){
+                                    location.reload();
+                                }, 10000);
+                            </script>
+                        {% endif %}
+                    </div>
+				</div>
+			</header>
+            <!--Husky-->
+			<div class="content content--husky">
+				<div class="mountain"></div>
+				<div class="mountain"></div>
+				<div class="husky">
+					<div class="husky-mane">
+						<div class="husky-coat"></div>
+					</div>
+					<div class="husky-body">
+						<div class="husky-head">
+							<div class="husky-ear"></div>
+							<div class="husky-ear"></div>
+							<div class="husky-face">
+								<div class="husky-eye"></div>
+								<div class="husky-eye"></div>
+								<div class="husky-nose"></div>
+								<div class="husky-mouth">
+									<div class="husky-lips"></div>
+									<div class="husky-tongue"></div>
+								</div>
+							</div>
+						</div>
+						<div class="husky-torso"></div>
+					</div>
+					<div class="husky-legs">
+						<div class="husky-front-legs">
+							<div class="husky-leg"></div>
+							<div class="husky-leg"></div>
+						</div>
+						<div class="husky-hind-leg">
+						</div>
+					</div>
+					<div class="husky-tail">
+						<div class="husky-tail">
+							<div class="husky-tail">
+								<div class="husky-tail">
+									<div class="husky-tail">
+										<div class="husky-tail">
+											<div class="husky-tail"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- /content -->
+		</div><!-- /container -->
+	</body>
+</html>

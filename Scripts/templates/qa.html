@@ -1,0 +1,204 @@
+{% with messages = get_flashed_messages()%}
+    {% if messages %}
+        <script>
+            alert("{{messages[-1]}}")
+        </script>
+    {% endif %}
+{% endwith %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Demo 2 for the tutorial on how to animate SVG animals using only CSS (SCSS)" />
+		<meta name="keywords" content="animated animals, css, scss, squigglevision, svg, husky, web design" />
+		<meta name="author" content="David Khourshid for Codrops" />
+		<link rel="shortcut icon" href="aw.ico">
+		<link href='https://fonts.googleapis.com/css?family=Freckle+Face' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/fox.css" />
+		<link rel="stylesheet" href="css/heading.css">
+        <link rel="stylesheet" href="css/body.css">
+		<link rel="stylesheet" href="css/loading.css">
+		<link rel="stylesheet" href="css/button.css">
+        <style>
+            .T{width: auto;}
+            .T:hover{filter: opacity(0.5) drop-shadow(0 0 0 #2e2d2d);}
+            table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            .disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        </style>
+	</head>
+	<body class="demo-fox">
+		<div class="container">
+			<header class="codrops-header">
+				<h1>QA Server Controller</h1>
+				<p class="info">Please view on a desktop <br/>(Chrome only)</p>
+				<div class="col-md-6 col-lg-4 mb-5">
+					<script>
+						self.name='unreload'
+					</script>
+                    <div class="button-group">
+                        {% if value %} <!--QA Server Check-->
+                            <div class="content green">
+                                <h1>QA SERVER ON</h1>
+                            </div>
+                        {% else %}
+                            <div class="content red">
+                                <h1>QA SERVER OFF</h1>
+                            </div>
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                        {% endif %}
+                        {% if ls_value %} <!--QA Login Server Check-->
+                            <div class="content green">
+                                <h1>QA LOGIN SERVER ON</h1>
+                            </div>
+                        {% else %}
+                            <div class="content red">
+                                <h1>QA LOGIN SERVER OFF</h1>
+                            </div>
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                        {% endif %}
+                        {% if am_value %} <!--QA Login Server Check-->
+                            <div class="content green">
+                                <h1>Admin SERVER ON</h1>
+                            </div>
+                        {% else %}
+                            <div class="content red">
+                                <h1>Admin SERVER OFF</h1>
+                            </div>
+                            <script>
+                                setTimeout(function(){
+                                location.reload();
+                                },10000);
+                            </script>
+                        {% endif %}
+                    </div>
+				    <div class="button-group">
+                        {% if IsBuildEnable %}
+                            <div class="button-row">
+                                <a href="/qaOnlyBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-lightgreen">GameServer Build Only</button>
+                                </a>
+                                <a href="/qaAllBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-lightgreen">All Build</button>
+                                </a>
+                                <a href="/qaAllRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-lightgreen">All Restart</button>
+                                </a>
+                            </div>
+                            <div class="button-row">
+                                <a href="/qaBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-springgreen">Game Server Build&Restart</button>
+                                </a>
+                                <a href="/qaRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-springgreen">Game Server Restart</button>
+                                </a>
+                            </div>
+                            <div class="button-row">
+                                <a href="/qaLoginBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-yellowgreen">Login Server Build&Restart</button>
+                                </a>
+                                <a href="/qaLoginRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-yellowgreen">Login Server Restart</button>
+                                </a>
+                            </div>
+                            <div class="button-row">
+                                <a href="/qaAdminBuild" class="custom-button-container">
+                                    <button class="custom-button custom-button-green">Admin Server Build&Restart</button>
+                                </a>
+                                <a href="/qaAdminRestart" class="custom-button-container">
+                                    <button class="custom-button custom-button-green">Admin Server Restart</button>
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="button-row">
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA Build Only</button>
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA All Build</button>
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA All Restart</button>
+                            </div>
+                            <div class="button-row">
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA Server Build&Restart</button>
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA Server Restart</button>
+                            </div>
+                            <div class="button-row">
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA Login Server Build&Restart</button>
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA Login Server Restart</button>
+                            </div>
+                            <div class="button-row">
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA Admin Server Build&Restart</button>
+                                <button class="custom-button custom-button-green" disabled style="opacity: 0.5; cursor: not-allowed;">QA Admin Server Restart</button>
+                            </div>
+                            <div class="loading" style="position: absolute; z-index: 2;"></div>
+                            <script>
+                                setTimeout(function(){
+                                    location.reload();
+                                }, 10000);
+                            </script>
+                        {% endif %}
+                    </div>
+				</div>
+			</header>
+            <!--FOX-->
+			<div class="content--fox">
+				<div class="fox">
+					<div class="fox-body">
+						<div class="fox-front-leg"></div>
+						<div class="fox-front-leg"></div>
+					</div>
+					<div class="fox-head">
+						<div class="fox-face">
+							<div class="fox-ears">
+								<div class="fox-ear"></div>
+								<div class="fox-ear"></div>
+							</div>
+							<div class="fox-skull"></div>
+							<div class="fox-front"></div>
+							<div class="fox-eyes"></div>
+							<div class="fox-nose"></div>
+						</div>
+					</div>
+					<div class="fox-tail">
+						<div class="fox-tail">
+							<div class="fox-tail">
+								<div class="fox-tail">
+									<div class="fox-tail">
+										<div class="fox-tail">
+											<div class="fox-tail">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div><!-- /content -->
+		</div><!-- /container -->
+	</body>
+</html>

@@ -1,0 +1,116 @@
+.button-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    flex-wrap: wrap;
+}
+
+.custom-button {
+    border: none;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 0px black;
+    font-family: 'Freckle Face', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.custom-button:not(:disabled):hover {
+    color: white;
+}
+
+.custom-button-blue {
+    background-color: blue;
+}
+
+.custom-button-blue:not(:disabled):hover {
+    background-color: darkblue;
+}
+
+.custom-button-dodgerblue {
+    background-color: dodgerblue;
+}
+
+.custom-button-dodgerblue:not(:disabled):hover {
+    background-color: darkblue;
+}
+
+.custom-button-skyblue {
+    background-color: skyblue;
+}
+
+.custom-button-skyblue:not(:disabled):hover {
+    background-color: darkblue;
+}
+
+.custom-button-royalblue {
+    background-color: royalblue;
+}
+
+.custom-button-royalblue:not(:disabled):hover {
+    background-color: darkblue;
+}
+
+.custom-button-yellowgreen {
+    background-color: yellowgreen;
+    color: black;
+}
+
+.custom-button-yellowgreen:not(:disabled):hover {
+    background-color: gray;
+}
+
+.custom-button-lightgreen {
+    background-color: lightgreen;
+    color: black;
+}
+
+.custom-button-lightgreen:not(:disabled):hover {
+    background-color: gray;
+}
+
+.custom-button-green {
+    background-color: greenyellow;
+    color: black;
+}
+
+.custom-button-green:not(:disabled):hover {
+    background-color: gray;
+}
+
+.custom-button-springgreen {
+    background-color: springgreen;
+    color: black;
+}
+
+.custom-button-springgreen:not(:disabled):hover {
+    background-color: gray;
+}
+
+.custom-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.custom-button-container {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adjust the spacing between elements */
+    flex-wrap: wrap; /* Ensure elements wrap if there's not enough space */
+    margin: 20px;
+}
